@@ -1,0 +1,46 @@
+// Flute x3
+// Fra-Tera
+// 
+
+
+// flute magico, tranquillo, con la melodia dal piano di "strage_piano_01.js"
+_$longFlute: stack(
+  note("<C4*2 D4 D#4 F4 G4 G#4 G#4 ->*4")
+    .scale("C:minor")
+    .sound("sine")
+    .room(.5)
+    .cutoff(800)
+    .gain(slider(1,0,1))
+    .mask("<1>/16"),
+
+  note("<[G5 G#5] [G5 D5] [F5 <D#5 F5>]>/4")
+    .scale("C:minor")
+    .s("[gm_flute:3 gm_flute:0]/256")
+    .dist(".9")
+    .postgain(sine.range(0, 1).slow(128))
+    .gain(slider(0.54,0,1))
+    .room(.9)
+    .mask("<1>/8")
+)
+
+// inoltre 
+// idea geniale: c'è il flauto, poi si spegne con il sine. 
+// rimane lo xilofono e parte un energy tecno beat 
+// che poi si spegne con il ritorno del flauto
+// 1/3 completato
+
+
+// una variazione sul flauto ( per x )
+_$shortFlute: stack( 
+  note("<C4*2 D4 D#4 F4 G4 G#4 G#4 ->*4").scale("c:minor").sound("sine")
+    .room(.5).cutoff(800)
+    .mask("<1 1 1 1>/16"),
+
+  note("<<- [C6 D6 D6 D6]>@2 [F5 D#5] [G5 G#5]*2 [G5 G#5] [F5 D#5]>").scale("C:minor")
+    .s("gm_flute:< 0 2 4 5 4 2 0 >/16")
+    .delay(0.25)
+    .legato(1.2)
+    .slow(1)
+    .gain(0.4)
+    .room(0.4)
+)
