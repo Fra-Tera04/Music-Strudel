@@ -4,7 +4,12 @@
 
 setcpm(120/2)
 
-$boomboom: s("bd").beat("0,2",4).gain(4)._scope({scale: .3})
+$boomboom: 
+  s("<bd@20 sbd@20>")
+    .beat(chooseCycles("<0,2>"),4) // 1->"<0,2>" 2->"<0,2,3>" 3->"<0, 1, 2, 3>" 4->"<0, 2, 3>","<0,2>" 4->1
+    .gain(4)
+    ._scope({scale: .3})
+
 $claphit: stack(
   s("hh*8")
     .room(1)
